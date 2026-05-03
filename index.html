@@ -1,0 +1,747 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Décret Tertiaire — GREENBIRDIE</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  :root {
+    --cream: #faf8f4;
+    --cream-dark: #f2ede4;
+    --dark: #1c1c1c;
+    --text: #2c2c2c;
+    --muted: #6b6b6b;
+    --border: #e0d9ce;
+    --red: #c0392b;
+    --red-light: #fdf0ee;
+    --green: #1a3d2b;
+    --green-light: #e8f2ec;
+    --gold: #b8962e;
+    --gold-light: #faf3e0;
+  }
+  html { scroll-behavior: smooth; }
+  body { font-family: 'DM Sans', sans-serif; background: var(--cream); color: var(--text); line-height: 1.6; overflow-x: hidden; }
+
+  /* NAV */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    background: #fff;
+    border-bottom: 1px solid var(--border);
+    padding: 0 2.5rem;
+    display: flex; align-items: center; justify-content: space-between;
+    height: 68px;
+    box-shadow: 0 1px 12px rgba(0,0,0,0.06);
+  }
+  .nav-logo img { height: 38px; width: auto; display: block; }
+  .nav-tabs { display: flex; gap: 6px; }
+  .nav-tab {
+    padding: 9px 22px;
+    border-radius: 4px;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 14px; font-weight: 500;
+    cursor: pointer;
+    transition: all 0.2s;
+    border: 1.5px solid var(--border);
+    color: var(--muted);
+    background: transparent;
+    letter-spacing: 0.2px;
+  }
+  .nav-tab.active { background: var(--dark); color: #fff; border-color: var(--dark); }
+  .nav-tab:hover:not(.active) { border-color: var(--dark); color: var(--dark); }
+
+  /* PAGE */
+  .page { display: none; }
+  .page.active { display: block; }
+
+  /* HERO */
+  .hero {
+    margin-top: 68px;
+    background: var(--dark);
+    padding: 88px 2.5rem 80px;
+    position: relative; overflow: hidden;
+  }
+  .hero::after {
+    content: '';
+    position: absolute; bottom: 0; right: 0;
+    width: 45%; height: 100%;
+    background: linear-gradient(135deg, transparent 40%, rgba(192,57,43,0.06) 100%);
+    pointer-events: none;
+  }
+  .hero-inner { max-width: 780px; }
+  .hero-eyebrow {
+    font-size: 11px; font-weight: 500; letter-spacing: 2.5px;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 24px;
+    display: flex; align-items: center; gap: 10px;
+  }
+  .hero-eyebrow::before {
+    content: '';
+    width: 28px; height: 1px;
+    background: var(--gold);
+    display: inline-block;
+  }
+  .hero h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(2.2rem, 5vw, 3.6rem);
+    font-weight: 700;
+    color: #fff;
+    line-height: 1.12;
+    margin-bottom: 24px;
+    letter-spacing: -0.5px;
+  }
+  .hero h1 em { font-style: italic; color: #e8e0d0; }
+  .hero-sub {
+    font-size: 17px; color: rgba(255,255,255,0.62);
+    max-width: 560px; line-height: 1.7;
+    margin-bottom: 44px; font-weight: 300;
+  }
+  .hero-actions { display: flex; align-items: center; gap: 20px; flex-wrap: wrap; }
+  .btn-primary {
+    display: inline-flex; align-items: center; gap: 10px;
+    background: #fff; color: var(--dark);
+    padding: 15px 32px;
+    border-radius: 4px;
+    font-family: 'DM Sans', sans-serif;
+    font-weight: 500; font-size: 15px;
+    text-decoration: none;
+    transition: all 0.2s;
+    letter-spacing: 0.2px;
+    border: none; cursor: pointer;
+  }
+  .btn-primary:hover { background: var(--cream); transform: translateY(-1px); }
+  .btn-primary svg { transition: transform 0.2s; }
+  .btn-primary:hover svg { transform: translateX(4px); }
+  .btn-secondary {
+    font-size: 14px; color: rgba(255,255,255,0.5);
+    text-decoration: none;
+    border-bottom: 1px solid rgba(255,255,255,0.25);
+    padding-bottom: 2px;
+    transition: color 0.2s;
+  }
+  .btn-secondary:hover { color: rgba(255,255,255,0.85); }
+
+  /* REFERENCES STRIP */
+  .refs-strip {
+    background: #fff;
+    border-bottom: 1px solid var(--border);
+    padding: 20px 2.5rem;
+    display: flex; align-items: center; gap: 0;
+    overflow: hidden;
+  }
+  .refs-label {
+    font-size: 11px; font-weight: 500; letter-spacing: 2px;
+    text-transform: uppercase; color: var(--muted);
+    white-space: nowrap; margin-right: 36px;
+    flex-shrink: 0;
+  }
+  .refs-logos {
+    display: flex; align-items: center; gap: 36px;
+    flex-wrap: wrap;
+  }
+  .ref-logo {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 14px; font-weight: 500;
+    color: #aaa;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    white-space: nowrap;
+    transition: color 0.2s;
+  }
+  .ref-logo:hover { color: var(--dark); }
+  .ref-sep { color: var(--border); font-size: 18px; }
+
+  /* STATS */
+  .stats-strip {
+    background: var(--cream-dark);
+    border-bottom: 1px solid var(--border);
+    padding: 40px 2.5rem;
+    display: flex; justify-content: center;
+  }
+  .stat { flex: 1; max-width: 200px; text-align: center; padding: 0 24px; border-right: 1px solid var(--border); }
+  .stat:last-child { border-right: none; }
+  .stat-num {
+    font-family: 'Playfair Display', serif;
+    font-size: 2.4rem; font-weight: 700;
+    color: var(--dark); line-height: 1; margin-bottom: 6px;
+  }
+  .stat-label { font-size: 12px; color: var(--muted); font-weight: 400; letter-spacing: 0.3px; }
+
+  /* PARTNER BADGE */
+  .partner-banner {
+    background: var(--gold-light);
+    border-top: 1px solid #e8d8a0;
+    border-bottom: 1px solid #e8d8a0;
+    padding: 16px 2.5rem;
+    display: flex; align-items: center; justify-content: space-between;
+    gap: 16px; flex-wrap: wrap;
+  }
+  .partner-left {
+    display: flex; align-items: center; gap: 14px;
+  }
+  .partner-badge {
+    background: var(--gold);
+    color: #fff;
+    font-size: 10px; font-weight: 600;
+    letter-spacing: 1.5px; text-transform: uppercase;
+    padding: 5px 12px; border-radius: 2px;
+    white-space: nowrap;
+  }
+  .partner-text {
+    font-size: 14px; color: #7a5c00;
+    font-weight: 400;
+  }
+  .partner-cta {
+    font-size: 13px; font-weight: 500;
+    color: var(--gold);
+    text-decoration: none;
+    border-bottom: 1px solid var(--gold);
+    padding-bottom: 1px;
+    white-space: nowrap;
+    transition: opacity 0.2s;
+  }
+  .partner-cta:hover { opacity: 0.7; }
+
+  /* SECTION */
+  section { padding: 72px 2.5rem; max-width: 880px; margin: 0 auto; }
+  .section-tag {
+    font-size: 10px; font-weight: 600; color: var(--red);
+    text-transform: uppercase; letter-spacing: 2.5px;
+    margin-bottom: 14px;
+  }
+  .section-title {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(1.7rem, 3vw, 2.4rem);
+    font-weight: 700; color: var(--dark);
+    line-height: 1.2; margin-bottom: 16px;
+  }
+  .section-lead {
+    font-size: 16px; color: var(--muted);
+    max-width: 580px; line-height: 1.75;
+    margin-bottom: 52px; font-weight: 300;
+  }
+
+  /* CARDS */
+  .cards-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 1px; margin-bottom: 64px; background: var(--border); border: 1px solid var(--border); border-radius: 8px; overflow: hidden; }
+  .card { background: #fff; padding: 28px; transition: background 0.2s; }
+  .card:hover { background: var(--cream); }
+  .card-num {
+    font-family: 'Playfair Display', serif;
+    font-size: 2rem; font-weight: 700;
+    color: var(--border); line-height: 1;
+    margin-bottom: 14px;
+  }
+  .card h3 { font-family: 'DM Sans', sans-serif; font-size: 15px; font-weight: 500; color: var(--dark); margin-bottom: 8px; }
+  .card p { font-size: 14px; color: var(--muted); line-height: 1.65; }
+
+  /* ALERT */
+  .alert-box {
+    background: #fff8ed;
+    border-left: 3px solid var(--gold);
+    padding: 20px 24px;
+    margin-bottom: 52px;
+    border-radius: 0 6px 6px 0;
+  }
+  .alert-box h4 { font-size: 14px; font-weight: 500; color: #7a5c00; margin-bottom: 6px; }
+  .alert-box p { font-size: 14px; color: #8a7030; line-height: 1.6; }
+
+  /* OFFRE */
+  .offre-box {
+    background: var(--dark);
+    border-radius: 8px;
+    padding: 52px;
+    margin-bottom: 64px;
+    position: relative; overflow: hidden;
+  }
+  .offre-box::before {
+    content: '';
+    position: absolute; top: 0; right: 0;
+    width: 300px; height: 300px;
+    background: radial-gradient(circle at top right, rgba(192,57,43,0.08) 0%, transparent 70%);
+    pointer-events: none;
+  }
+  .offre-eyebrow {
+    font-size: 10px; font-weight: 600; letter-spacing: 2.5px;
+    text-transform: uppercase; color: var(--gold);
+    margin-bottom: 12px;
+  }
+  .offre-box h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.7rem; font-weight: 700; color: #fff;
+    margin-bottom: 8px;
+  }
+  .offre-sub { color: rgba(255,255,255,0.45); font-size: 14px; font-weight: 300; margin-bottom: 40px; }
+  .offre-steps { display: flex; flex-direction: column; gap: 24px; }
+  .offre-step { display: flex; align-items: flex-start; gap: 20px; padding-bottom: 24px; border-bottom: 1px solid rgba(255,255,255,0.07); }
+  .offre-step:last-child { border-bottom: none; padding-bottom: 0; }
+  .step-num {
+    width: 28px; height: 28px; min-width: 28px;
+    border: 1px solid rgba(255,255,255,0.2);
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-family: 'Playfair Display', serif;
+    font-size: 13px; font-weight: 700; color: rgba(255,255,255,0.5);
+    margin-top: 2px;
+  }
+  .step-content h4 { font-size: 15px; font-weight: 500; color: #fff; margin-bottom: 5px; }
+  .step-content p { font-size: 13px; color: rgba(255,255,255,0.45); line-height: 1.6; font-weight: 300; }
+
+  /* FORM */
+  .form-section {
+    background: #fff;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 52px;
+    margin-bottom: 64px;
+  }
+  .form-header { margin-bottom: 36px; padding-bottom: 28px; border-bottom: 1px solid var(--border); }
+  .form-header h2 { font-family: 'Playfair Display', serif; font-size: 1.5rem; font-weight: 700; color: var(--dark); margin-bottom: 8px; }
+  .form-header p { font-size: 14px; color: var(--muted); font-weight: 300; }
+  .form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+  .form-group { display: flex; flex-direction: column; gap: 7px; }
+  .form-group.full { grid-column: 1 / -1; }
+  label { font-size: 12px; font-weight: 500; color: var(--text); letter-spacing: 0.3px; text-transform: uppercase; }
+  input, select, textarea {
+    font-family: 'DM Sans', sans-serif; font-size: 14px;
+    padding: 11px 14px;
+    border: 1px solid var(--border);
+    border-radius: 4px; color: var(--text);
+    background: var(--cream); transition: border-color 0.2s; outline: none; width: 100%;
+  }
+  input:focus, select:focus, textarea:focus { border-color: var(--dark); background: #fff; }
+  textarea { resize: vertical; min-height: 100px; }
+  .form-note { font-size: 12px; color: var(--muted); margin-top: 8px; }
+  .submit-btn {
+    margin-top: 28px;
+    display: inline-flex; align-items: center; gap: 10px;
+    background: var(--dark); color: #fff;
+    padding: 15px 36px; border-radius: 4px;
+    font-family: 'DM Sans', sans-serif;
+    font-weight: 500; font-size: 15px;
+    border: none; cursor: pointer; transition: all 0.2s;
+  }
+  .submit-btn:hover { background: #333; transform: translateY(-1px); }
+  .submit-btn svg { transition: transform 0.2s; }
+  .submit-btn:hover svg { transform: translateX(4px); }
+  .success-msg {
+    display: none; background: var(--green-light);
+    border: 1px solid #a8d0b4; border-radius: 6px;
+    padding: 20px 24px; margin-top: 24px;
+    color: var(--green); font-weight: 500; font-size: 15px;
+    align-items: center; gap: 12px;
+  }
+  .success-msg.show { display: flex; }
+
+  /* DIVIDER */
+  .divider { height: 1px; background: var(--border); max-width: 880px; margin: 0 auto; }
+
+  /* FOOTER */
+  footer { background: var(--dark); padding: 48px 2.5rem; text-align: center; }
+  .footer-logo { margin-bottom: 6px; }
+  .footer-logo img { height: 32px; width: auto; opacity: 0.85; }
+  .footer-tagline { font-size: 13px; color: rgba(255,255,255,0.3); font-style: italic; margin-bottom: 24px; }
+  .footer-links { display: flex; gap: 28px; justify-content: center; margin-bottom: 28px; }
+  .footer-links a { font-size: 13px; color: rgba(255,255,255,0.4); text-decoration: none; transition: color 0.2s; }
+  .footer-links a:hover { color: rgba(255,255,255,0.8); }
+  .footer-copy { font-size: 12px; color: rgba(255,255,255,0.2); }
+
+  @media (max-width: 620px) {
+    nav { padding: 0 1.2rem; }
+    .hero, section { padding-left: 1.4rem; padding-right: 1.4rem; }
+    .form-grid { grid-template-columns: 1fr; }
+    .offre-box, .form-section { padding: 28px 22px; }
+    .stats-strip { flex-wrap: wrap; }
+    .stat { border-right: none; border-bottom: 1px solid var(--border); padding: 16px; }
+    .stat:last-child { border-bottom: none; }
+    .refs-strip { flex-direction: column; align-items: flex-start; gap: 12px; }
+    .nav-tab { padding: 7px 14px; font-size: 13px; }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="https://www.greenbirdie.com" class="nav-logo">
+    <img src="data:image/png;base64,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" alt="GREENBIRDIE">
+  </a>
+  <div class="nav-tabs">
+    <button class="nav-tab active" onclick="showPage('hotels', this)">Hôtellerie</button>
+    <button class="nav-tab" onclick="showPage('commerces', this)">Commerce &amp; Retail</button>
+  </div>
+</nav>
+
+<!-- ═══════════════════ PAGE HÔTELS ═══════════════════ -->
+<div id="page-hotels" class="page active">
+
+  <div class="hero">
+    <div class="hero-inner">
+      <div class="hero-eyebrow">Décret Tertiaire — Hôtellerie</div>
+      <h1>Conformité OPERAT<br>pour votre <em>établissement hôtelier</em>.</h1>
+      <p class="hero-sub">GREENBIRDIE prend en charge votre déclaration OPERAT de A à Z — audit, structuration des EFA, collecte des données et suivi annuel. Vous gérez vos clients, nous gérons votre conformité.</p>
+      <div class="hero-actions">
+        <a href="#form-hotels" class="btn-primary">
+          Demander un devis
+          <svg width="16" height="16" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </a>
+        <a href="https://www.greenbirdie.com/réduire-les-factures-énergetiques" class="btn-secondary">En savoir plus sur nos missions</a>
+      </div>
+    </div>
+  </div>
+
+  <div class="refs-strip">
+    <span class="refs-label">Références</span>
+    <div class="refs-logos">
+      <span class="ref-logo">Accor</span>
+      <span class="ref-sep">·</span>
+      <span class="ref-logo">Louvre Hotels</span>
+      <span class="ref-sep">·</span>
+      <span class="ref-logo">Carrefour</span>
+      <span class="ref-sep">·</span>
+      <span class="ref-logo">Intermarché</span>
+      <span class="ref-sep">·</span>
+      <span class="ref-logo">L'Oréal</span>
+      <span class="ref-sep">·</span>
+      <span class="ref-logo">Safran</span>
+    </div>
+  </div>
+
+  <div class="stats-strip">
+    <div class="stat"><div class="stat-num">+1 850</div><div class="stat-label">Sites en gestion OPERAT</div></div>
+    <div class="stat"><div class="stat-num">20 ans</div><div class="stat-label">D'expertise en transition énergétique</div></div>
+    <div class="stat"><div class="stat-num">-40 %</div><div class="stat-label">Objectif de réduction 2030</div></div>
+  </div>
+
+  <section>
+    <div class="section-tag">Contexte réglementaire</div>
+    <h2 class="section-title">Ce que le Décret Tertiaire exige de votre hôtel</h2>
+    <p class="section-lead">Tout bâtiment tertiaire de plus de 1 000 m² — dont les hôtels — est soumis à déclaration annuelle sur la plateforme OPERAT, avec des objectifs progressifs de réduction des consommations.</p>
+
+    <div class="alert-box">
+      <h4>Amendes et "name &amp; shame" — une réalité depuis 2024</h4>
+      <p>Les contrôles se sont intensifiés. En cas de non-déclaration ou de données erronées, l'exploitant s'expose à une publication publique sur OPERAT et à des sanctions financières pouvant atteindre 7 500 €. GREENBIRDIE vous protège de ce risque.</p>
+    </div>
+
+    <div class="cards-grid">
+      <div class="card">
+        <div class="card-num">01</div>
+        <h3>Déclaration annuelle OPERAT</h3>
+        <p>Saisie qualifiée des consommations par EFA avec les codes d'activité hôteliers appropriés — nuitées, restauration, spa, parties communes.</p>
+      </div>
+      <div class="card">
+        <div class="card-num">02</div>
+        <h3>Trajectoire de réduction</h3>
+        <p>Objectif –40 % en 2030, –50 % en 2040, –60 % en 2050. GREENBIRDIE construit votre feuille de route et identifie les leviers adaptés à l'hôtellerie.</p>
+      </div>
+      <div class="card">
+        <div class="card-num">03</div>
+        <h3>Multi-sites et groupes</h3>
+        <p>Pour les groupes hôteliers, nous optimisons la structure de vos groupes de structures OPERAT afin de centraliser et simplifier le reporting.</p>
+      </div>
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+  <section>
+    <div class="section-tag">Notre prestation</div>
+    <h2 class="section-title">Une mission clé en main, de l'audit à la conformité</h2>
+
+    <div class="offre-box">
+      <div class="offre-eyebrow">Mission Décret Tertiaire — Hôtellerie</div>
+      <h2>Conformité OPERAT garantie</h2>
+      <p class="offre-sub">Tarif sur devis selon le nombre d'EFA et la complexité du site — devis reçu sous 48h ouvrées</p>
+      <div class="offre-steps">
+        <div class="offre-step">
+          <div class="step-num">1</div>
+          <div class="step-content">
+            <h4>Audit et structuration OPERAT</h4>
+            <p>Vérification de vos EFA, codes d'activité, périmètre de déclaration. Création ou reprise du compte OPERAT.</p>
+          </div>
+        </div>
+        <div class="offre-step">
+          <div class="step-num">2</div>
+          <div class="step-content">
+            <h4>Collecte et saisie des consommations</h4>
+            <p>Récupération des données énergie auprès de vos fournisseurs. Saisie qualifiée et validée sur OPERAT.</p>
+          </div>
+        </div>
+        <div class="offre-step">
+          <div class="step-num">3</div>
+          <div class="step-content">
+            <h4>Plan d'actions et leviers de réduction</h4>
+            <p>Identification des actions prioritaires adaptées à votre établissement. Suivi annuel et mise à jour OPERAT.</p>
+          </div>
+        </div>
+        <div class="offre-step">
+          <div class="step-num">4</div>
+          <div class="step-content">
+            <h4>Devis personnalisé sous 48h</h4>
+            <p>À réception de votre formulaire, vous recevez un devis signable en ligne via notre plateforme sécurisée.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div id="form-hotels" class="form-section">
+      <div class="form-header">
+        <h2>Demandez votre devis</h2>
+        <p>Notre équipe analyse votre situation et vous envoie un devis personnalisé sous 48h ouvrées.</p>
+      </div>
+      <form id="hotelsForm" onsubmit="handleSubmit(event, 'hotels')">
+        <div class="form-grid">
+          <div class="form-group"><label>Nom *</label><input type="text" required placeholder="Dupont"></div>
+          <div class="form-group"><label>Prénom *</label><input type="text" required placeholder="Marie"></div>
+          <div class="form-group"><label>Email professionnel *</label><input type="email" required placeholder="m.dupont@hotel.fr"></div>
+          <div class="form-group"><label>Téléphone</label><input type="tel" placeholder="06 00 00 00 00"></div>
+          <div class="form-group"><label>Nom de l'hôtel / groupe *</label><input type="text" required placeholder="Hôtel Le Parc — Groupe XYZ"></div>
+          <div class="form-group"><label>Nombre de sites *</label>
+            <select required>
+              <option value="">Sélectionner…</option>
+              <option>1 établissement</option><option>2 à 5 établissements</option>
+              <option>6 à 15 établissements</option><option>Plus de 15 établissements</option>
+            </select>
+          </div>
+          <div class="form-group"><label>Surface totale (m²) *</label><input type="number" required placeholder="2500" min="1000"></div>
+          <div class="form-group"><label>Situation OPERAT actuelle *</label>
+            <select required>
+              <option value="">Sélectionner…</option>
+              <option>Jamais déclaré</option><option>Déclaré partiellement</option>
+              <option>Déclaré mais avec erreurs</option><option>À jour — besoin de suivi uniquement</option>
+            </select>
+          </div>
+          <div class="form-group full"><label>Contexte ou question</label>
+            <textarea placeholder="Ex : Nous avons plusieurs EFA — restauration, nuitées et séminaires — et ne savons pas comment les structurer sur OPERAT…"></textarea>
+          </div>
+        </div>
+        <p class="form-note">* Champs obligatoires. Vos données sont utilisées uniquement pour préparer votre devis GREENBIRDIE.</p>
+        <button type="submit" class="submit-btn">
+          Envoyer ma demande
+          <svg width="16" height="16" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </button>
+        <div class="success-msg" id="success-hotels">
+          ✅ Votre demande a bien été transmise. L'équipe GREENBIRDIE vous contacte sous 48h avec votre devis.
+        </div>
+      </form>
+    </div>
+  </section>
+</div>
+
+<!-- ═══════════════════ PAGE COMMERCES ═══════════════════ -->
+<div id="page-commerces" class="page">
+
+  <div class="hero">
+    <div class="hero-inner">
+      <div class="hero-eyebrow">Décret Tertiaire — Commerce &amp; Retail</div>
+      <h1>Bailleur ou locataire,<br>nous clarifions <em>vos obligations</em><br>et déclarons pour vous.</h1>
+      <p class="hero-sub">Boutiques en centres commerciaux, enseignes multi-sites, franchises : GREENBIRDIE identifie qui déclare quoi, structure vos EFA et gère votre conformité OPERAT.</p>
+      <div class="hero-actions">
+        <a href="#form-commerces" class="btn-primary">
+          Demander un devis
+          <svg width="16" height="16" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </a>
+        <a href="https://www.greenbirdie.com/réduire-les-factures-énergetiques" class="btn-secondary">En savoir plus sur nos missions</a>
+      </div>
+    </div>
+  </div>
+
+  <div class="refs-strip">
+    <span class="refs-label">Références</span>
+    <div class="refs-logos">
+      <span class="ref-logo">Carrefour</span>
+      <span class="ref-sep">·</span>
+      <span class="ref-logo">Intermarché</span>
+      <span class="ref-sep">·</span>
+      <span class="ref-logo">Accor</span>
+      <span class="ref-sep">·</span>
+      <span class="ref-logo">Louvre Hotels</span>
+      <span class="ref-sep">·</span>
+      <span class="ref-logo">Lidl</span>
+      <span class="ref-sep">·</span>
+      <span class="ref-logo">L'Oréal</span>
+    </div>
+  </div>
+
+  <div class="partner-banner">
+    <div class="partner-left">
+      <span class="partner-badge">Tarif préférentiel enseigne</span>
+      <span class="partner-text">Des conditions tarifaires négociées sont disponibles pour les enseignes partenaires (Intermarché, Carrefour et autres groupements).</span>
+    </div>
+    <a href="#form-commerces" class="partner-cta">En bénéficier →</a>
+  </div>
+
+  <div class="stats-strip">
+    <div class="stat"><div class="stat-num">+1 850</div><div class="stat-label">Sites en gestion OPERAT</div></div>
+    <div class="stat"><div class="stat-num">20 ans</div><div class="stat-label">D'expertise en transition énergétique</div></div>
+    <div class="stat"><div class="stat-num">-40 %</div><div class="stat-label">Objectif de réduction 2030</div></div>
+  </div>
+
+  <section>
+    <div class="section-tag">Un enjeu spécifique aux commerces</div>
+    <h2 class="section-title">Bail commercial et OPERAT : qui déclare ?</h2>
+    <p class="section-lead">En centre commercial, la répartition des obligations entre bailleur et locataire est complexe. Une mauvaise structuration des EFA expose à des sanctions. GREENBIRDIE vous apporte la réponse juridique et opérationnelle.</p>
+
+    <div class="alert-box">
+      <h4>Les pièges les plus fréquents dans le commerce</h4>
+      <p>Le seuil de 1 000 m² s'applique à l'immeuble entier, pas à votre seule boutique. Une EFA ne peut appartenir qu'à un seul groupe de structures à la fois — une erreur de structure entraîne des déclarations invalides. GREENBIRDIE identifie et corrige ces anomalies.</p>
+    </div>
+
+    <div class="cards-grid">
+      <div class="card">
+        <div class="card-num">01</div>
+        <h3>Locataire d'une boutique</h3>
+        <p>Vous déclarez vos parties privatives. GREENBIRDIE collecte vos données et vous inscrit dans le bon groupe de structures OPERAT.</p>
+      </div>
+      <div class="card">
+        <div class="card-num">02</div>
+        <h3>Propriétaire / foncière</h3>
+        <p>Les parties communes sont sous votre responsabilité. Nous structurons vos EFA et vous accompagnons sur les clauses de partage de données avec vos locataires.</p>
+      </div>
+      <div class="card">
+        <div class="card-num">03</div>
+        <h3>Enseignes multi-sites</h3>
+        <p>Chaque boutique dans un centre distinct = une EFA différente. Nous centralisons tout et optimisons votre reporting groupe pour les enseignes à fort maillage territorial.</p>
+      </div>
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+  <section>
+    <div class="section-tag">Notre prestation</div>
+    <h2 class="section-title">Une mission clé en main, de l'audit à la conformité</h2>
+
+    <div class="offre-box">
+      <div class="offre-eyebrow">Mission Décret Tertiaire — Commerce &amp; Retail</div>
+      <h2>Conformité OPERAT garantie</h2>
+      <p class="offre-sub">Tarif sur devis selon le nombre de boutiques et la complexité de la structure bailleur/locataire</p>
+      <div class="offre-steps">
+        <div class="offre-step">
+          <div class="step-num">1</div>
+          <div class="step-content">
+            <h4>Qualification de vos obligations</h4>
+            <p>Analyse de votre bail commercial, de la structure propriétaire/locataire, identification des EFA à déclarer.</p>
+          </div>
+        </div>
+        <div class="offre-step">
+          <div class="step-num">2</div>
+          <div class="step-content">
+            <h4>Structuration OPERAT</h4>
+            <p>Création ou vérification de vos EFA, inscription dans le bon groupe de structures, paramétrage des codes d'activité commerce.</p>
+          </div>
+        </div>
+        <div class="offre-step">
+          <div class="step-num">3</div>
+          <div class="step-content">
+            <h4>Collecte et saisie annuelle</h4>
+            <p>Récupération des données énergie auprès de vos fournisseurs et/ou du gestionnaire de centre. Saisie et validation sur OPERAT.</p>
+          </div>
+        </div>
+        <div class="offre-step">
+          <div class="step-num">4</div>
+          <div class="step-content">
+            <h4>Devis personnalisé sous 48h</h4>
+            <p>À réception de votre formulaire, vous recevez un devis signable en ligne. Conditions préférentielles pour enseignes partenaires.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div id="form-commerces" class="form-section">
+      <div class="form-header">
+        <h2>Demandez votre devis</h2>
+        <p>Notre équipe analyse votre situation et vous envoie un devis personnalisé sous 48h ouvrées. Précisez si vous êtes une enseigne partenaire pour bénéficier des tarifs préférentiels.</p>
+      </div>
+      <form id="commercesForm" onsubmit="handleSubmit(event, 'commerces')">
+        <div class="form-grid">
+          <div class="form-group"><label>Nom *</label><input type="text" required placeholder="Martin"></div>
+          <div class="form-group"><label>Prénom *</label><input type="text" required placeholder="Sophie"></div>
+          <div class="form-group"><label>Email professionnel *</label><input type="email" required placeholder="s.martin@enseigne.fr"></div>
+          <div class="form-group"><label>Téléphone</label><input type="tel" placeholder="06 00 00 00 00"></div>
+          <div class="form-group"><label>Société / enseigne *</label><input type="text" required placeholder="Ex : Boutique Mode Paris"></div>
+          <div class="form-group"><label>Vous êtes… *</label>
+            <select required>
+              <option value="">Sélectionner…</option>
+              <option>Locataire d'une ou plusieurs boutiques</option>
+              <option>Propriétaire / bailleur (foncière)</option>
+              <option>Gestionnaire de centre commercial</option>
+              <option>Franchisé multi-sites</option>
+            </select>
+          </div>
+          <div class="form-group"><label>Nombre de boutiques *</label>
+            <select required>
+              <option value="">Sélectionner…</option>
+              <option>1 boutique</option><option>2 à 5 boutiques</option>
+              <option>6 à 20 boutiques</option><option>Plus de 20 boutiques</option>
+            </select>
+          </div>
+          <div class="form-group"><label>Situation OPERAT actuelle *</label>
+            <select required>
+              <option value="">Sélectionner…</option>
+              <option>Jamais déclaré</option><option>Déclaré partiellement</option>
+              <option>Déclaré mais avec des doutes</option><option>À jour — besoin de suivi uniquement</option>
+            </select>
+          </div>
+          <div class="form-group full"><label>Enseigne partenaire ?</label>
+            <select>
+              <option value="">Sélectionner si applicable…</option>
+              <option>Intermarché / Les Mousquetaires</option>
+              <option>Carrefour / groupement Carrefour</option>
+              <option>Autre groupement — préciser dans le message</option>
+              <option>Pas d'accord-cadre enseigne</option>
+            </select>
+          </div>
+          <div class="form-group full"><label>Contexte ou question</label>
+            <textarea placeholder="Ex : Je suis locataire dans 3 centres Intermarché et je ne sais pas si je dois déclarer seul ou si le bailleur le fait pour moi…"></textarea>
+          </div>
+        </div>
+        <p class="form-note">* Champs obligatoires. Vos données sont utilisées uniquement pour préparer votre devis GREENBIRDIE.</p>
+        <button type="submit" class="submit-btn">
+          Envoyer ma demande
+          <svg width="16" height="16" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </button>
+        <div class="success-msg" id="success-commerces">
+          ✅ Votre demande a bien été transmise. L'équipe GREENBIRDIE vous contacte sous 48h avec votre devis.
+        </div>
+      </form>
+    </div>
+  </section>
+</div>
+
+<footer>
+  <div class="footer-logo"><img src="data:image/png;base64,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" alt="GREENBIRDIE"></div>
+  <div class="footer-tagline">L'énergie optimiste</div>
+  <div class="footer-links">
+    <a href="https://www.greenbirdie.com">Site principal</a>
+    <a href="https://www.greenbirdie.com/contact">Contact</a>
+    <a href="https://www.greenbirdie.com/notre-histoire">À propos</a>
+    <a href="https://www.greenbirdie.com/blog">Articles</a>
+  </div>
+  <div class="footer-copy">© 2025 GREENBIRDIE EURL — Expert en transition énergétique depuis 20 ans — Paris 14e</div>
+</footer>
+
+<script>
+function showPage(id, btn) {
+  document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+  document.querySelectorAll('.nav-tab').forEach(t => t.classList.remove('active'));
+  document.getElementById('page-' + id).classList.add('active');
+  btn.classList.add('active');
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+
+function handleSubmit(e, type) {
+  e.preventDefault();
+  const form = e.target;
+  const btn = form.querySelector('.submit-btn');
+  btn.disabled = true;
+  btn.textContent = 'Envoi en cours…';
+  setTimeout(() => {
+    form.style.opacity = '0.4';
+    form.style.pointerEvents = 'none';
+    document.getElementById('success-' + type).classList.add('show');
+  }, 1000);
+}
+</script>
+</body>
+</html>
