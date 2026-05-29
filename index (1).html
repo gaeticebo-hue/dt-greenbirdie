@@ -1,0 +1,1482 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Décret Tertiaire Hôtels & Commerces — GREENBIRDIE</title>
+<meta name="description" content="GREENBIRDIE gère votre conformité Décret Tertiaire sur OPERAT : audit, structuration des EFA, collecte des données et déclaration annuelle. Prestation clé en main pour hôtels et commerces en centres commerciaux. Devis sous 48h.">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://dt.greenbirdie.com">
+<meta property="og:title" content="Décret Tertiaire Hôtels & Commerces — GREENBIRDIE">
+<meta property="og:description" content="GREENBIRDIE gère votre conformité Décret Tertiaire sur OPERAT : audit, structuration des EFA, collecte des données et déclaration annuelle. Devis sous 48h.">
+<meta property="og:url" content="https://dt.greenbirdie.com">
+<meta property="og:type" content="website">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  :root {
+    --cream: #faf8f4;
+    --cream-dark: #f2ede4;
+    --dark: #1c1c1c;
+    --text: #2c2c2c;
+    --muted: #6b6b6b;
+    --border: #e0d9ce;
+    --red: #c0392b;
+    --red-light: #fdf0ee;
+    --green: #1a3d2b;
+    --green-light: #e8f2ec;
+    --gold: #b8962e;
+    --gold-light: #faf3e0;
+  }
+  html { scroll-behavior: smooth; }
+  body { font-family: 'DM Sans', sans-serif; background: var(--cream); color: var(--text); line-height: 1.6; overflow-x: hidden; }
+
+  /* NAV */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    background: #fff;
+    border-bottom: 1px solid var(--border);
+    padding: 0 2.5rem;
+    display: flex; align-items: center; justify-content: space-between;
+    height: 68px;
+    box-shadow: 0 1px 12px rgba(0,0,0,0.06);
+  }
+  .nav-logo img { height: 38px; width: auto; display: block; }
+  .nav-tabs { display: flex; gap: 6px; }
+  .nav-tab {
+    padding: 9px 22px;
+    border-radius: 4px;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 14px; font-weight: 500;
+    cursor: pointer;
+    transition: all 0.2s;
+    border: 1.5px solid var(--border);
+    color: var(--muted);
+    background: transparent;
+    letter-spacing: 0.2px;
+  }
+  .nav-tab.active { background: var(--dark); color: #fff; border-color: var(--dark); }
+  .nav-tab:hover:not(.active) { border-color: var(--dark); color: var(--dark); }
+
+  /* PAGE */
+  .page { display: none; }
+  .page.active { display: block; }
+
+  /* HERO */
+  .hero {
+    margin-top: 68px;
+    background: var(--dark);
+    padding: 88px 2.5rem 80px;
+    position: relative; overflow: hidden;
+  }
+  .hero::after {
+    content: '';
+    position: absolute; bottom: 0; right: 0;
+    width: 45%; height: 100%;
+    background: linear-gradient(135deg, transparent 40%, rgba(192,57,43,0.06) 100%);
+    pointer-events: none;
+  }
+  .hero-inner { max-width: 780px; }
+  .hero-eyebrow {
+    font-size: 11px; font-weight: 500; letter-spacing: 2.5px;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 24px;
+    display: flex; align-items: center; gap: 10px;
+  }
+  .hero-eyebrow::before {
+    content: '';
+    width: 28px; height: 1px;
+    background: var(--gold);
+    display: inline-block;
+  }
+  .hero h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(2.2rem, 5vw, 3.6rem);
+    font-weight: 700;
+    color: #fff;
+    line-height: 1.12;
+    margin-bottom: 24px;
+    letter-spacing: -0.5px;
+  }
+  .hero h1 em { font-style: italic; color: #e8e0d0; }
+  .hero-sub {
+    font-size: 17px; color: rgba(255,255,255,0.62);
+    max-width: 560px; line-height: 1.7;
+    margin-bottom: 44px; font-weight: 300;
+  }
+  .hero-actions { display: flex; align-items: center; gap: 20px; flex-wrap: wrap; }
+  .btn-primary {
+    display: inline-flex; align-items: center; gap: 10px;
+    background: #fff; color: var(--dark);
+    padding: 15px 32px;
+    border-radius: 4px;
+    font-family: 'DM Sans', sans-serif;
+    font-weight: 500; font-size: 15px;
+    text-decoration: none;
+    transition: all 0.2s;
+    letter-spacing: 0.2px;
+    border: none; cursor: pointer;
+  }
+  .btn-primary:hover { background: var(--cream); transform: translateY(-1px); }
+  .btn-primary svg { transition: transform 0.2s; }
+  .btn-primary:hover svg { transform: translateX(4px); }
+  .btn-secondary {
+    font-size: 14px; color: rgba(255,255,255,0.5);
+    text-decoration: none;
+    border-bottom: 1px solid rgba(255,255,255,0.25);
+    padding-bottom: 2px;
+    transition: color 0.2s;
+  }
+  .btn-secondary:hover { color: rgba(255,255,255,0.85); }
+
+  /* REFERENCES STRIP */
+  .refs-strip {
+    background: #fff;
+    border-bottom: 1px solid var(--border);
+    padding: 20px 2.5rem;
+    display: flex; align-items: center; gap: 0;
+    overflow: hidden;
+  }
+  .refs-label {
+    font-size: 11px; font-weight: 500; letter-spacing: 2px;
+    text-transform: uppercase; color: var(--muted);
+    white-space: nowrap; margin-right: 36px;
+    flex-shrink: 0;
+  }
+  .refs-logos {
+    display: flex; align-items: center; gap: 36px;
+    flex-wrap: wrap;
+  }
+  .ref-logo {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 14px; font-weight: 500;
+    color: #aaa;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    white-space: nowrap;
+    transition: color 0.2s;
+  }
+  .ref-logo:hover { color: var(--dark); }
+  .ref-sep { color: var(--border); font-size: 18px; }
+
+  /* STATS */
+  .stats-strip {
+    background: var(--cream-dark);
+    border-bottom: 1px solid var(--border);
+    padding: 40px 2.5rem;
+    display: flex; justify-content: center;
+  }
+  .stat { flex: 1; max-width: 200px; text-align: center; padding: 0 24px; border-right: 1px solid var(--border); }
+  .stat:last-child { border-right: none; }
+  .stat-num {
+    font-family: 'Playfair Display', serif;
+    font-size: 2.4rem; font-weight: 700;
+    color: var(--dark); line-height: 1; margin-bottom: 6px;
+  }
+  .stat-label { font-size: 12px; color: var(--muted); font-weight: 400; letter-spacing: 0.3px; }
+
+  /* PARTNER BADGE */
+  .partner-banner {
+    background: var(--gold-light);
+    border-top: 1px solid #e8d8a0;
+    border-bottom: 1px solid #e8d8a0;
+    padding: 16px 2.5rem;
+    display: flex; align-items: center; justify-content: space-between;
+    gap: 16px; flex-wrap: wrap;
+  }
+  .partner-left {
+    display: flex; align-items: center; gap: 14px;
+  }
+  .partner-badge {
+    background: var(--gold);
+    color: #fff;
+    font-size: 10px; font-weight: 600;
+    letter-spacing: 1.5px; text-transform: uppercase;
+    padding: 5px 12px; border-radius: 2px;
+    white-space: nowrap;
+  }
+  .partner-text {
+    font-size: 14px; color: #7a5c00;
+    font-weight: 400;
+  }
+  .partner-cta {
+    font-size: 13px; font-weight: 500;
+    color: var(--gold);
+    text-decoration: none;
+    border-bottom: 1px solid var(--gold);
+    padding-bottom: 1px;
+    white-space: nowrap;
+    transition: opacity 0.2s;
+  }
+  .partner-cta:hover { opacity: 0.7; }
+
+  /* SECTION */
+  section { padding: 72px 2.5rem; max-width: 880px; margin: 0 auto; }
+  .section-tag {
+    font-size: 10px; font-weight: 600; color: var(--red);
+    text-transform: uppercase; letter-spacing: 2.5px;
+    margin-bottom: 14px;
+  }
+  .section-title {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(1.7rem, 3vw, 2.4rem);
+    font-weight: 700; color: var(--dark);
+    line-height: 1.2; margin-bottom: 16px;
+  }
+  .section-lead {
+    font-size: 16px; color: var(--muted);
+    max-width: 580px; line-height: 1.75;
+    margin-bottom: 52px; font-weight: 300;
+  }
+
+  /* CARDS */
+  .cards-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 1px; margin-bottom: 64px; background: var(--border); border: 1px solid var(--border); border-radius: 8px; overflow: hidden; }
+  .card { background: #fff; padding: 28px; transition: background 0.2s; }
+  .card:hover { background: var(--cream); }
+  .card-num {
+    font-family: 'Playfair Display', serif;
+    font-size: 2rem; font-weight: 700;
+    color: var(--border); line-height: 1;
+    margin-bottom: 14px;
+  }
+  .card h3 { font-family: 'DM Sans', sans-serif; font-size: 15px; font-weight: 500; color: var(--dark); margin-bottom: 8px; }
+  .card p { font-size: 14px; color: var(--muted); line-height: 1.65; }
+
+  /* ALERT */
+  .alert-box {
+    background: #fff8ed;
+    border-left: 3px solid var(--gold);
+    padding: 20px 24px;
+    margin-bottom: 52px;
+    border-radius: 0 6px 6px 0;
+  }
+  .alert-box h4 { font-size: 14px; font-weight: 500; color: #7a5c00; margin-bottom: 6px; }
+  .alert-box p { font-size: 14px; color: #8a7030; line-height: 1.6; }
+
+  /* OFFRE */
+  .offre-box {
+    background: var(--dark);
+    border-radius: 8px;
+    padding: 52px;
+    margin-bottom: 64px;
+    position: relative; overflow: hidden;
+  }
+  .offre-box::before {
+    content: '';
+    position: absolute; top: 0; right: 0;
+    width: 300px; height: 300px;
+    background: radial-gradient(circle at top right, rgba(192,57,43,0.08) 0%, transparent 70%);
+    pointer-events: none;
+  }
+  .offre-eyebrow {
+    font-size: 10px; font-weight: 600; letter-spacing: 2.5px;
+    text-transform: uppercase; color: var(--gold);
+    margin-bottom: 12px;
+  }
+  .offre-box h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.7rem; font-weight: 700; color: #fff;
+    margin-bottom: 8px;
+  }
+  .offre-sub { color: rgba(255,255,255,0.45); font-size: 14px; font-weight: 300; margin-bottom: 40px; }
+  .offre-steps { display: flex; flex-direction: column; gap: 24px; }
+  .offre-step { display: flex; align-items: flex-start; gap: 20px; padding-bottom: 24px; border-bottom: 1px solid rgba(255,255,255,0.07); }
+  .offre-step:last-child { border-bottom: none; padding-bottom: 0; }
+  .step-num {
+    width: 28px; height: 28px; min-width: 28px;
+    border: 1px solid rgba(255,255,255,0.2);
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-family: 'Playfair Display', serif;
+    font-size: 13px; font-weight: 700; color: rgba(255,255,255,0.5);
+    margin-top: 2px;
+  }
+  .step-content h4 { font-size: 15px; font-weight: 500; color: #fff; margin-bottom: 5px; }
+  .step-content p { font-size: 13px; color: rgba(255,255,255,0.45); line-height: 1.6; font-weight: 300; }
+
+  /* FORM */
+  .form-section {
+    background: #fff;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 52px;
+    margin-bottom: 64px;
+  }
+  .form-header { margin-bottom: 36px; padding-bottom: 28px; border-bottom: 1px solid var(--border); }
+  .form-header h2 { font-family: 'Playfair Display', serif; font-size: 1.5rem; font-weight: 700; color: var(--dark); margin-bottom: 8px; }
+  .form-header p { font-size: 14px; color: var(--muted); font-weight: 300; }
+  .form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+  .form-group { display: flex; flex-direction: column; gap: 7px; }
+  .form-group.full { grid-column: 1 / -1; }
+  label { font-size: 12px; font-weight: 500; color: var(--text); letter-spacing: 0.3px; text-transform: uppercase; }
+  input, select, textarea {
+    font-family: 'DM Sans', sans-serif; font-size: 14px;
+    padding: 11px 14px;
+    border: 1px solid var(--border);
+    border-radius: 4px; color: var(--text);
+    background: var(--cream); transition: border-color 0.2s; outline: none; width: 100%;
+  }
+  input:focus, select:focus, textarea:focus { border-color: var(--dark); background: #fff; }
+  textarea { resize: vertical; min-height: 100px; }
+  .form-note { font-size: 12px; color: var(--muted); margin-top: 8px; }
+  .submit-btn {
+    margin-top: 28px;
+    display: inline-flex; align-items: center; gap: 10px;
+    background: var(--dark); color: #fff;
+    padding: 15px 36px; border-radius: 4px;
+    font-family: 'DM Sans', sans-serif;
+    font-weight: 500; font-size: 15px;
+    border: none; cursor: pointer; transition: all 0.2s;
+  }
+  .submit-btn:hover { background: #333; transform: translateY(-1px); }
+  .submit-btn svg { transition: transform 0.2s; }
+  .submit-btn:hover svg { transform: translateX(4px); }
+  .success-msg {
+    display: none; background: var(--green-light);
+    border: 1px solid #a8d0b4; border-radius: 6px;
+    padding: 20px 24px; margin-top: 24px;
+    color: var(--green); font-weight: 500; font-size: 15px;
+    align-items: center; gap: 12px;
+  }
+  .success-msg.show { display: flex; }
+
+  /* DIVIDER */
+  .divider { height: 1px; background: var(--border); max-width: 880px; margin: 0 auto; }
+
+  /* FOOTER */
+  footer { background: var(--dark); padding: 48px 2.5rem; text-align: center; }
+  .footer-logo { margin-bottom: 6px; }
+  .footer-logo img { height: 32px; width: auto; }
+  .footer-tagline { font-size: 13px; color: var(--muted); font-style: italic; margin-bottom: 24px; }
+  .footer-links { display: flex; gap: 28px; justify-content: center; margin-bottom: 28px; }
+  .footer-links a { font-size: 13px; color: var(--muted); text-decoration: none; transition: color 0.2s; }
+  .footer-links a:hover { color: var(--dark); }
+  .footer-copy { font-size: 12px; color: #bbb; }
+
+  @media (max-width: 620px) {
+    nav { padding: 0 1.2rem; }
+    .hero, section { padding-left: 1.4rem; padding-right: 1.4rem; }
+    .form-grid { grid-template-columns: 1fr; }
+    .offre-box, .form-section { padding: 28px 22px; }
+    .stats-strip { flex-wrap: wrap; }
+    .stat { border-right: none; border-bottom: 1px solid var(--border); padding: 16px; }
+    .stat:last-child { border-bottom: none; }
+    .refs-strip { flex-direction: column; align-items: flex-start; gap: 12px; }
+    .nav-tab { padding: 7px 14px; font-size: 13px; }
+  }
+
+  /* HERO CHECKLIST */
+  .hero-checklist {
+    list-style: none;
+    margin-bottom: 36px;
+    display: flex; flex-direction: column; gap: 10px;
+  }
+  .hero-checklist li {
+    font-size: 15px; color: rgba(255,255,255,0.75);
+    display: flex; align-items: flex-start; gap: 10px;
+    font-weight: 300; line-height: 1.5;
+  }
+  .hero-checklist li::before {
+    content: '✓';
+    color: #f5d97a;
+    font-weight: 700;
+    flex-shrink: 0;
+    margin-top: 1px;
+  }
+  .hero-checklist li strong { color: #f5d97a; font-weight: 600; }
+
+  /* RÉASSURANCE FORM (haut) */
+  .form-reassurance {
+    display: flex; flex-wrap: wrap; gap: 16px;
+    margin-bottom: 28px;
+    padding: 16px 0;
+    border-top: 1px solid var(--border);
+    border-bottom: 1px solid var(--border);
+  }
+  .reassurance-item {
+    display: flex; align-items: center; gap: 7px;
+    font-size: 12px; color: var(--muted);
+  }
+  .reassurance-item::before {
+    content: '✓';
+    color: var(--green);
+    font-weight: 700; font-size: 13px;
+  }
+
+  /* INTRO BLOC SIRET */
+  .form-intro {
+    background: var(--cream-dark);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    padding: 18px 20px;
+    margin-bottom: 24px;
+    display: flex; gap: 14px; align-items: flex-start;
+  }
+  .form-intro-icon { font-size: 20px; flex-shrink: 0; margin-top: 1px; }
+  .form-intro p { font-size: 13px; color: var(--text); line-height: 1.6; }
+  .form-intro strong { color: var(--dark); }
+
+  /* SIRET FIELD */
+  .siret-group { position: relative; }
+  .siret-group input { font-family: 'DM Sans', monospace; letter-spacing: 1px; font-size: 15px; }
+  .siret-status {
+    position: absolute; right: 12px; top: 50%; transform: translateY(-50%);
+    font-size: 12px; font-weight: 500;
+    display: none;
+  }
+  .siret-status.valid { color: var(--green); display: block; }
+  .siret-status.invalid { color: var(--red); display: block; }
+  .field-hint {
+    font-size: 11px; color: var(--muted);
+    margin-top: 5px; line-height: 1.5;
+  }
+
+  /* AUTOFILL FIELDS (future SIRENE) */
+  input[data-siret-fill] {
+    background: var(--cream);
+    transition: background 0.3s;
+  }
+  input[data-siret-fill].filled {
+    background: #f0f8f2;
+    border-color: #a8d0b4;
+  }
+
+  /* RÉASSURANCE BAS DE FORMULAIRE */
+  .form-bottom-reassurance {
+    margin-top: 20px;
+    padding: 16px 20px;
+    background: var(--green-light);
+    border-radius: 6px;
+    border: 1px solid #a8d0b4;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 8px 24px;
+  }
+  .form-bottom-reassurance .reassurance-item {
+    font-size: 12px; color: var(--green);
+  }
+  .form-bottom-reassurance .reassurance-item::before {
+    color: var(--green);
+  }
+  @media (max-width: 620px) {
+    .form-bottom-reassurance { grid-template-columns: 1fr; }
+  }
+
+  /* SECTION "ALLEZ PLUS LOIN" */
+  .plus-loin-section { padding: 60px 2.5rem; max-width: 880px; margin: 0 auto; }
+  .plus-loin-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 16px;
+    margin-top: 36px;
+  }
+  .plus-loin-card {
+    background: #fff;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 24px;
+    text-decoration: none;
+    transition: all 0.2s;
+    display: flex; flex-direction: column; gap: 10px;
+  }
+  .plus-loin-card:hover { border-color: var(--dark); transform: translateY(-2px); box-shadow: 0 4px 16px rgba(0,0,0,0.06); }
+  .plus-loin-card-icon { font-size: 22px; }
+  .plus-loin-card-tag {
+    font-size: 9px; font-weight: 600; letter-spacing: 2px;
+    text-transform: uppercase; color: var(--muted);
+  }
+  .plus-loin-card h3 { font-size: 15px; font-weight: 500; color: var(--dark); line-height: 1.3; }
+  .plus-loin-card p { font-size: 13px; color: var(--muted); line-height: 1.6; flex-grow: 1; }
+  .plus-loin-card-cta {
+    font-size: 12px; font-weight: 500; color: var(--muted);
+    display: flex; align-items: center; gap: 6px;
+    margin-top: 4px;
+  }
+  @media (max-width: 620px) {
+    .plus-loin-section { padding-left: 1.4rem; padding-right: 1.4rem; }
+  }
+
+  /* HERO PRICE HINT */
+  .hero-price-hint {
+    font-size: 13px; color: rgba(255,255,255,0.5);
+    display: flex; align-items: center; gap: 8px;
+  }
+  .hero-price-hint s { color: rgba(255,255,255,0.3); font-weight: 300; }
+  .hero-price-hint strong { color: #f5d97a; font-weight: 600; }
+
+  /* PARTNER BANNER — PRICE */
+  .price-partner-block { display: flex; align-items: baseline; gap: 10px; flex-wrap: wrap; }
+  .price-normal-old { font-size: 13px; color: #a08030; text-decoration: line-through; font-weight: 400; }
+  .price-partner-new { font-size: 17px; font-weight: 700; color: #7a5c00; }
+  .price-partner-new span { font-size: 12px; font-weight: 400; }
+
+  /* COMMENT ÇA MARCHE */
+  .steps-how {
+    display: grid;
+    grid-template-columns: 1fr auto 1fr auto 1fr;
+    gap: 0;
+    align-items: start;
+    margin-bottom: 16px;
+  }
+  .step-how {
+    background: #fff;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 28px 24px;
+    text-align: center;
+  }
+  .step-how-num {
+    width: 44px; height: 44px;
+    border-radius: 50%;
+    background: var(--dark);
+    color: #fff;
+    font-family: 'Playfair Display', serif;
+    font-size: 1.1rem; font-weight: 700;
+    display: flex; align-items: center; justify-content: center;
+    margin: 0 auto 16px;
+  }
+  .step-how h3 { font-size: 15px; font-weight: 500; color: var(--dark); margin-bottom: 8px; }
+  .step-how p { font-size: 13px; color: var(--muted); line-height: 1.6; }
+  .step-how-arrow {
+    display: flex; align-items: center; justify-content: center;
+    padding: 0 16px;
+    font-size: 22px; color: var(--border);
+    margin-top: 40px;
+  }
+  @media (max-width: 620px) {
+    .steps-how { grid-template-columns: 1fr; }
+    .step-how-arrow { transform: rotate(90deg); margin: 0 auto; padding: 8px 0; }
+  }
+
+  /* CE QUI EST INCLUS */
+  .inclus-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 12px;
+    margin-bottom: 48px;
+  }
+  .inclus-item {
+    display: flex; align-items: flex-start; gap: 12px;
+    background: #fff;
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    padding: 16px 18px;
+    font-size: 14px; color: var(--text);
+    font-weight: 400;
+  }
+  .inclus-item::before {
+    content: '✓';
+    color: var(--green);
+    font-weight: 700;
+    font-size: 15px;
+    flex-shrink: 0;
+    margin-top: 1px;
+  }
+
+  /* PLATEFORME GREENBIRDIE ÉNERGIE */
+  .platform-section {
+    padding: 72px 2.5rem;
+    background: var(--dark);
+    max-width: 100%;
+  }
+  .platform-section .section-tag { color: var(--gold); }
+  .platform-section .section-title { color: #fff; }
+  .platform-section .section-lead { color: rgba(255,255,255,0.55); }
+  .platform-inner { max-width: 880px; margin: 0 auto; }
+  .platform-layout {
+    display: grid;
+    grid-template-columns: 1fr 320px;
+    gap: 48px;
+    align-items: center;
+  }
+  .platform-screenshot {
+    border-radius: 8px;
+    overflow: hidden;
+    border: 1px solid rgba(255,255,255,0.1);
+    box-shadow: 0 24px 60px rgba(0,0,0,0.4);
+  }
+  .platform-screenshot img {
+    width: 100%; display: block;
+  }
+  .platform-bullets { display: flex; flex-direction: column; gap: 16px; }
+  .platform-bullet {
+    display: flex; align-items: flex-start; gap: 14px;
+    padding: 16px;
+    background: rgba(255,255,255,0.05);
+    border: 1px solid rgba(255,255,255,0.08);
+    border-radius: 6px;
+  }
+  .platform-bullet-icon {
+    font-size: 18px; flex-shrink: 0; line-height: 1.4;
+  }
+  .platform-bullet-text h4 { font-size: 14px; font-weight: 500; color: #fff; margin-bottom: 2px; }
+  .platform-bullet-text p { font-size: 12px; color: rgba(255,255,255,0.45); line-height: 1.5; }
+  @media (max-width: 720px) {
+    .platform-layout { grid-template-columns: 1fr; }
+    .platform-section { padding-left: 1.4rem; padding-right: 1.4rem; }
+  }
+
+  /* PRICE ENCART */
+  .price-encart {
+    background: var(--gold-light);
+    border: 1px solid #e8d8a0;
+    border-radius: 8px;
+    padding: 28px 32px;
+    margin-bottom: 32px;
+    display: flex; align-items: center; justify-content: space-between;
+    gap: 24px; flex-wrap: wrap;
+  }
+  .price-encart-label {
+    font-size: 10px; font-weight: 600; letter-spacing: 2px;
+    text-transform: uppercase; color: var(--gold);
+    margin-bottom: 8px;
+  }
+  .price-encart-amounts {
+    display: flex; align-items: baseline; gap: 12px; flex-wrap: wrap;
+    margin-bottom: 6px;
+  }
+  .price-struck { font-size: 16px; color: #b09040; text-decoration: line-through; font-weight: 300; }
+  .price-main { font-family: 'Playfair Display', serif; font-size: 2rem; font-weight: 700; color: var(--dark); }
+  .price-per { font-family: 'DM Sans', sans-serif; font-size: 14px; font-weight: 400; color: var(--muted); }
+  .price-encart-note { font-size: 12px; color: #8a7030; line-height: 1.5; max-width: 400px; }
+  .btn-cta-gold {
+    display: inline-flex; align-items: center; gap: 8px;
+    background: var(--dark); color: #fff;
+    padding: 14px 28px; border-radius: 4px;
+    font-family: 'DM Sans', sans-serif;
+    font-weight: 500; font-size: 15px;
+    text-decoration: none; white-space: nowrap;
+    transition: all 0.2s;
+    border: none; cursor: pointer;
+    flex-shrink: 0;
+  }
+  .btn-cta-gold:hover { background: #333; transform: translateY(-1px); }
+  @media (max-width: 620px) {
+    .price-encart { padding: 20px; }
+    .price-main { font-size: 1.6rem; }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="https://www.greenbirdie.com" class="nav-logo">
+    <img src="data:image/png;base64,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" alt="GREENBIRDIE">
+  </a>
+  <div class="nav-tabs">
+    <button class="nav-tab" onclick="showPage('hotels', this)">Hôtellerie</button>
+    <button class="nav-tab active" onclick="showPage('commerces', this)">Commerce &amp; Retail</button>
+  </div>
+</nav>
+
+<!-- ═══════════════════ PAGE HÔTELS ═══════════════════ -->
+<div id="page-hotels" class="page">
+
+  <div class="hero">
+    <div class="hero-inner">
+      <div class="hero-eyebrow">Solution recommandée pour les groupes hôteliers partenaires</div>
+      <h1>Conformité Décret Tertiaire<br>pour votre <em>établissement hôtelier</em>.</h1>
+      <p class="hero-sub">Votre hôtel est probablement soumis à des obligations légales de réduction d'énergie. GREENBIRDIE vérifie votre situation et gère tout pour vous.</p>
+      <ul class="hero-checklist">
+        <li>Vérification gratuite de votre éligibilité réglementaire</li>
+        <li>GREENBIRDIE gère vos déclarations — sans effort de votre côté</li>
+        <li>Offre à partir de <strong>49 € HT / an</strong> pour les groupes partenaires</li>
+        <li>Accès inclus à votre espace de suivi énergétique en ligne</li>
+      </ul>
+      <div class="hero-actions">
+        <a href="#form-hotels" class="btn-primary">
+          Vérifier mon éligibilité
+          <svg width="16" height="16" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </a>
+        <a href="#inclus-hotels" class="btn-secondary">Découvrir ce qui est inclus</a>
+      </div>
+    </div>
+  </div>
+
+  <div class="refs-strip">
+    <span class="refs-label">Références</span>
+    <div class="refs-logos">
+      <span class="ref-logo">Accor</span>
+      <span class="ref-sep">·</span>
+      <span class="ref-logo">Louvre Hotels</span>
+      <span class="ref-sep">·</span>
+      <span class="ref-logo">Carrefour</span>
+      <span class="ref-sep">·</span>
+      <span class="ref-logo">Intermarché</span>
+      <span class="ref-sep">·</span>
+      <span class="ref-logo">L'Oréal</span>
+      <span class="ref-sep">·</span>
+      <span class="ref-logo">Safran</span>
+    </div>
+  </div>
+
+  <div class="partner-banner">
+    <div class="partner-left">
+      <span class="partner-badge">Tarif préférentiel enseigne</span>
+      <div>
+        <div class="price-partner-block">
+          <span class="price-partner-new">À partir de 49 € HT <span>/ an / site</span></span>
+        </div>
+        <span class="partner-text">Pour les groupes partenaires (Accor, Louvre Hotels et autres groupements) — conditions négociées.</span>
+      </div>
+    </div>
+    <a href="#form-hotels" class="partner-cta">Obtenir mon offre partenaire →</a>
+  </div>
+
+  <div class="stats-strip">
+    <div class="stat"><div class="stat-num">+3000</div><div class="stat-label">Sites en gestion OPERAT</div></div>
+    <div class="stat"><div class="stat-num">20 ans</div><div class="stat-label">D'expertise en transition énergétique</div></div>
+    <div class="stat"><div class="stat-num">-40 %</div><div class="stat-label">Objectif de réduction 2030</div></div>
+  </div>
+
+  <section>
+    <div class="section-tag">Simple &amp; rapide</div>
+    <h2 class="section-title">Comment ça marche ?</h2>
+    <p class="section-lead">En 3 étapes, GREENBIRDIE prend en charge votre conformité Décret Tertiaire de A à Z.</p>
+    <div class="steps-how">
+      <div class="step-how">
+        <div class="step-how-num">1</div>
+        <h3>Je renseigne mes informations</h3>
+        <p>En 2 minutes, je complète le formulaire avec les informations de mon établissement. Aucune expertise technique requise.</p>
+      </div>
+      <div class="step-how-arrow">→</div>
+      <div class="step-how">
+        <div class="step-how-num">2</div>
+        <h3>GREENBIRDIE vérifie mon éligibilité</h3>
+        <p>Notre équipe analyse votre situation réglementaire et prépare votre proposition personnalisée sous 48h.</p>
+      </div>
+      <div class="step-how-arrow">→</div>
+      <div class="step-how">
+        <div class="step-how-num">3</div>
+        <h3>Je reçois mon offre et mon accompagnement</h3>
+        <p>Vous signez en ligne et GREENBIRDIE gère votre conformité dès la première année, avec un suivi annuel inclus.</p>
+      </div>
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+  <section id="inclus-hotels">
+    <div class="section-tag">Votre prestation</div>
+    <h2 class="section-title">Ce qui est inclus dans votre abonnement</h2>
+    <p class="section-lead">Une solution complète pour rester conforme sans vous en préoccuper — à partir de 49 € HT / an pour les groupes partenaires.</p>
+    <div class="inclus-grid">
+      <div class="inclus-item">Vérification de votre éligibilité réglementaire</div>
+      <div class="inclus-item">Gestion complète de vos déclarations annuelles</div>
+      <div class="inclus-item">Accès à votre tableau de bord GREENBIRDIE Énergie</div>
+      <div class="inclus-item">Suivi de vos consommations et de vos objectifs</div>
+      <div class="inclus-item">Assistance GREENBIRDIE (email + téléphone)</div>
+      <div class="inclus-item">Mise à jour réglementaire annuelle incluse</div>
+    </div>
+
+    <div class="alert-box">
+      <h4>Non-conformité : jusqu'à 7 500 € d'amende et publication publique</h4>
+      <p>Depuis 2024, les contrôles se sont intensifiés. Tout établissement hôtelier de plus de 1 000 m² doit déclarer ses consommations chaque année. GREENBIRDIE vous protège de ce risque et gère tout pour vous.</p>
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+  <div class="platform-section">
+    <div class="platform-inner">
+      <div class="section-tag">Votre espace énergie</div>
+      <h2 class="section-title">GREENBIRDIE Énergie : bien plus que la conformité</h2>
+      <p class="section-lead">Inclus dans votre abonnement : un espace numérique pour suivre votre énergie, rester conforme et piloter vos économies — sans expertise technique.</p>
+      <div class="platform-layout">
+        <div class="platform-screenshot">
+          <img src="capture ecran plateforme energie.png" alt="Tableau de bord GREENBIRDIE Énergie — suivi des consommations et objectifs Décret Tertiaire">
+        </div>
+        <div class="platform-bullets">
+          <div class="platform-bullet">
+            <div class="platform-bullet-icon">📊</div>
+            <div class="platform-bullet-text"><h4>Suivi des consommations</h4><p>Électricité, gaz, eau — visualisez vos données par période et par site.</p></div>
+          </div>
+          <div class="platform-bullet">
+            <div class="platform-bullet-icon">🎯</div>
+            <div class="platform-bullet-text"><h4>Conformité réglementaire</h4><p>Votre statut Décret Tertiaire et vos objectifs 2030 affichés en temps réel.</p></div>
+          </div>
+          <div class="platform-bullet">
+            <div class="platform-bullet-icon">📈</div>
+            <div class="platform-bullet-text"><h4>Historique &amp; économies</h4><p>Mesurez vos progrès, identifiez les postes de surconsommation.</p></div>
+          </div>
+          <div class="platform-bullet">
+            <div class="platform-bullet-icon">🔔</div>
+            <div class="platform-bullet-text"><h4>Alertes &amp; rappels</h4><p>Notifications proactives avant les échéances réglementaires.</p></div>
+          </div>
+          <div class="platform-bullet">
+            <div class="platform-bullet-icon">📚</div>
+            <div class="platform-bullet-text"><h4>Ressources &amp; guides</h4><p>Fiches pratiques et conseils adaptés à l'hôtellerie.</p></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <section>
+    <div class="section-tag">Votre accompagnement</div>
+    <h2 class="section-title">GREENBIRDIE gère tout pour vous</h2>
+
+    <div class="offre-box">
+      <div class="offre-eyebrow">Solution Décret Tertiaire — Hôtellerie</div>
+      <h2>Conformité garantie, sans effort de votre côté</h2>
+      <p class="offre-sub">GREENBIRDIE accompagne +3 000 sites en France — Accor, Louvre Hotels, Carrefour, Intermarché</p>
+      <div class="offre-steps">
+        <div class="offre-step">
+          <div class="step-num">1</div>
+          <div class="step-content">
+            <h4>Vérification de votre situation</h4>
+            <p>Nous analysons vos obligations légales et vérifions votre éligibilité selon votre type d'établissement et sa superficie.</p>
+          </div>
+        </div>
+        <div class="offre-step">
+          <div class="step-num">2</div>
+          <div class="step-content">
+            <h4>Mise en conformité complète</h4>
+            <p>Création de votre dossier réglementaire, collecte de vos données de consommation, déclaration annuelle effectuée par nos experts.</p>
+          </div>
+        </div>
+        <div class="offre-step">
+          <div class="step-num">3</div>
+          <div class="step-content">
+            <h4>Accès à votre tableau de bord</h4>
+            <p>Votre espace GREENBIRDIE Énergie vous permet de suivre vos consommations et votre conformité en un coup d'œil.</p>
+          </div>
+        </div>
+        <div class="offre-step">
+          <div class="step-num">4</div>
+          <div class="step-content">
+            <h4>Suivi annuel inclus</h4>
+            <p>Mise à jour réglementaire chaque année, alertes proactives et assistance GREENBIRDIE disponible par email et téléphone.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="price-encart">
+      <div>
+        <div class="price-encart-label">Offre groupes partenaires</div>
+        <div class="price-encart-amounts">
+          <span class="price-struck">150 € HT / an / site</span>
+          <span class="price-main">49 € HT <span class="price-per">/ an / site</span></span>
+        </div>
+        <p class="price-encart-note">Conditions préférentielles négociées pour les groupes partenaires. Sans engagement de durée minimum. Tarif standard : 150 € HT / an / site.</p>
+      </div>
+      <a href="#form-hotels" class="btn-cta-gold">Obtenir mon offre →</a>
+    </div>
+
+    <div id="form-hotels" class="form-section">
+      <div class="form-header">
+        <h2>Vérifiez votre situation en moins de 2 minutes</h2>
+        <p>À partir de votre SIRET, nos équipes vérifient si votre établissement est concerné par le Décret Tertiaire et si des informations sont déjà disponibles dans notre base. Nous vous adressons ensuite la solution la plus adaptée à votre situation.</p>
+      </div>
+      <div class="form-reassurance">
+        <span class="reassurance-item">Analyse préalable de votre situation</span>
+        <span class="reassurance-item">Recommandé pour les groupes partenaires</span>
+        <span class="reassurance-item">Accompagnement par une équipe spécialisée</span>
+        <span class="reassurance-item">Sans engagement</span>
+      </div>
+      <form id="hotelsForm" name="decret-tertiaire-hotels" method="POST" data-netlify="true" data-netlify-honeypot="bot-field" onsubmit="handleSubmit(event, 'hotels')">
+        <input type="hidden" name="form-name" value="decret-tertiaire-hotels">
+        <input type="hidden" name="bot-field" style="display:none">
+        <div class="form-grid">
+
+          <!-- SIRET — donnée clé pour qualification -->
+          <div class="form-group full">
+            <label>SIRET de l'établissement *</label>
+            <div class="siret-group">
+              <input type="text" required name="siret" id="siret-hotels"
+                placeholder="Ex : 12345678901234"
+                maxlength="14" inputmode="numeric" pattern="[0-9]{14}"
+                autocomplete="off"
+                oninput="validateSiret(this, 'siret-status-hotels')">
+              <span class="siret-status" id="siret-status-hotels"></span>
+            </div>
+            <p class="field-hint">Nous utilisons le SIRET pour vérifier si votre établissement est déjà identifié dans notre base et faciliter l'analyse de votre situation. Le SIRET figure sur votre extrait Kbis ou vos factures fournisseurs.</p>
+          </div>
+
+          <!-- Raison sociale + adresse — prêts pour préremplissage SIRENE futur -->
+          <div class="form-group">
+            <label>Raison sociale / nom de l'hôtel *</label>
+            <input type="text" required name="raison_sociale" id="raison-sociale-hotels"
+              data-siret-fill="raison_sociale"
+              placeholder="Se préremplira automatiquement">
+          </div>
+          <div class="form-group">
+            <label>Adresse de l'établissement</label>
+            <input type="text" name="adresse" id="adresse-hotels"
+              data-siret-fill="adresse"
+              placeholder="Se préremplira automatiquement">
+          </div>
+
+          <!-- Contact -->
+          <div class="form-group"><label>Nom *</label><input type="text" required name="nom" placeholder="Dupont"></div>
+          <div class="form-group"><label>Prénom *</label><input type="text" required name="prenom" placeholder="Marie"></div>
+          <div class="form-group"><label>Email professionnel *</label><input type="email" required name="email" placeholder="m.dupont@hotel.fr"></div>
+          <div class="form-group"><label>Téléphone</label><input type="tel" name="telephone" placeholder="06 00 00 00 00"></div>
+
+          <!-- Qualification -->
+          <div class="form-group"><label>Nombre d'établissements concernés *</label>
+            <select name="nb_etablissements" required>
+              <option value="">Sélectionner…</option>
+              <option>1 établissement</option>
+              <option>2 à 5 établissements</option>
+              <option>6 à 20 établissements</option>
+              <option>Plus de 20 établissements</option>
+            </select>
+          </div>
+          <div class="form-group"><label>Groupe partenaire ?</label>
+            <select name="groupe_partenaire">
+              <option value="">Sélectionner si applicable…</option>
+              <option>Accor / groupement Accor</option>
+              <option>Louvre Hotels Group</option>
+              <option>Autre groupement — préciser dans le message</option>
+              <option>Pas d'accord-cadre groupe</option>
+            </select>
+          </div>
+          <div class="form-group full"><label>Votre situation actuelle *</label>
+            <select name="situation_actuelle" required>
+              <option value="">Sélectionner…</option>
+              <option>Je ne sais pas si je suis concerné</option>
+              <option>Je suis concerné mais n'ai rien fait</option>
+              <option>J'ai commencé les démarches mais je bloque</option>
+              <option>Je cherche à simplifier mon suivi existant</option>
+            </select>
+          </div>
+          <div class="form-group full"><label>Une question ou précision ?</label>
+            <textarea name="message" placeholder="Ex : Nous gérons plusieurs hôtels dans différentes villes et ne savons pas par où commencer pour la déclaration énergie…"></textarea>
+          </div>
+        </div>
+
+        <p class="form-note">* Champs obligatoires. Vos données sont utilisées uniquement pour analyser votre éligibilité — aucun démarchage, aucun engagement.</p>
+        <button type="submit" class="submit-btn">
+          Analyser ma situation
+          <svg width="16" height="16" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </button>
+
+        <div class="form-bottom-reassurance">
+          <span class="reassurance-item">Analyse préalable de votre situation</span>
+          <span class="reassurance-item">Vérification de l'éligibilité</span>
+          <span class="reassurance-item">Aucun engagement tant que votre situation n'a pas été analysée</span>
+          <span class="reassurance-item">Réponse sous 48 heures ouvrées</span>
+        </div>
+
+        <div class="success-msg" id="success-hotels">
+          ✅ Votre demande a bien été transmise. Un expert GREENBIRDIE analyse votre situation et vous contacte sous 48h ouvrées.
+        </div>
+      </form>
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+  <div class="plus-loin-section" id="inclus-hotels">
+    <div class="section-tag">Services complémentaires</div>
+    <h2 class="section-title">Allez plus loin dans la maîtrise de votre énergie</h2>
+    <p class="section-lead" style="margin-bottom:0">Disponibles dans votre espace GREENBIRDIE Énergie, en complément de votre conformité Décret Tertiaire.</p>
+    <div class="plus-loin-grid">
+      <div class="plus-loin-card">
+        <div class="plus-loin-card-icon">⚡</div>
+        <div class="plus-loin-card-tag">Avec Mon Courtier Énergie</div>
+        <h3>Optimiser mon contrat d'énergie</h3>
+        <p>Comparez les offres et réduisez votre facture électricité ou gaz grâce à notre partenaire courtier spécialisé.</p>
+        <span class="plus-loin-card-cta">En savoir plus →</span>
+      </div>
+      <div class="plus-loin-card">
+        <div class="plus-loin-card-icon">💡</div>
+        <div class="plus-loin-card-tag">Bientôt disponible</div>
+        <h3>Estimer mes économies d'énergie</h3>
+        <p>Calculez le potentiel d'économies de votre établissement grâce à notre simulateur dédié.</p>
+        <span class="plus-loin-card-cta">Être notifié →</span>
+      </div>
+      <div class="plus-loin-card">
+        <div class="plus-loin-card-icon">📖</div>
+        <div class="plus-loin-card-tag">Ressources GREENBIRDIE</div>
+        <h3>Comprendre mes obligations</h3>
+        <p>Guides pratiques, livres blancs et fiches explicatives pour comprendre la réglementation sans jargon.</p>
+        <span class="plus-loin-card-cta">Accéder aux ressources →</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════════ PAGE COMMERCES ═══════════════════ -->
+<div id="page-commerces" class="page active">
+
+  <div class="hero">
+    <div class="hero-inner">
+      <div class="hero-eyebrow">Recommandé dans le cadre de l'accompagnement Carrefour</div>
+      <h1>Votre conformité<br>Décret Tertiaire,<br><em>simple et accompagnée.</em></h1>
+      <p class="hero-sub">Commerçant, coiffeur, restaurateur, franchisé — vérifiez en 2 minutes si vous êtes concerné. GREENBIRDIE gère tout le reste.</p>
+      <ul class="hero-checklist">
+        <li>Vous êtes peut-être concerné par la loi sur les économies d'énergie</li>
+        <li>GREENBIRDIE vérifie votre éligibilité — sans engagement</li>
+        <li>Offre à partir de <strong>49 € HT / an</strong> pour les enseignes partenaires</li>
+        <li>Accès inclus à votre espace de suivi énergétique en ligne</li>
+      </ul>
+      <div class="hero-actions">
+        <a href="#form-commerces" class="btn-primary">
+          Vérifier mon éligibilité
+          <svg width="16" height="16" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </a>
+        <a href="#inclus-commerces" class="btn-secondary">Découvrir ce qui est inclus</a>
+      </div>
+    </div>
+  </div>
+
+  <div class="refs-strip">
+    <span class="refs-label">Références</span>
+    <div class="refs-logos">
+      <span class="ref-logo">Carrefour</span>
+      <span class="ref-sep">·</span>
+      <span class="ref-logo">Intermarché</span>
+      <span class="ref-sep">·</span>
+      <span class="ref-logo">Accor</span>
+      <span class="ref-sep">·</span>
+      <span class="ref-logo">Louvre Hotels</span>
+      <span class="ref-sep">·</span>
+      <span class="ref-logo">Lidl</span>
+      <span class="ref-sep">·</span>
+      <span class="ref-logo">L'Oréal</span>
+    </div>
+  </div>
+
+  <div class="partner-banner">
+    <div class="partner-left">
+      <span class="partner-badge">Tarif préférentiel enseigne</span>
+      <div>
+        <div class="price-partner-block">
+          <span class="price-partner-new">À partir de 49 € HT <span>/ an / site</span></span>
+        </div>
+        <span class="partner-text">Pour les enseignes partenaires — conditions négociées, valables dès la première année.</span>
+      </div>
+    </div>
+    <a href="#form-commerces" class="partner-cta">Obtenir mon offre partenaire →</a>
+  </div>
+
+  <div class="stats-strip">
+    <div class="stat"><div class="stat-num">+3 000</div><div class="stat-label">Sites en gestion OPERAT</div></div>
+    <div class="stat"><div class="stat-num">20 ans</div><div class="stat-label">D'expertise en transition énergétique</div></div>
+    <div class="stat"><div class="stat-num">-40 %</div><div class="stat-label">Objectif de réduction 2030</div></div>
+  </div>
+
+  <section>
+    <div class="section-tag">Simple &amp; rapide</div>
+    <h2 class="section-title">Comment ça marche ?</h2>
+    <p class="section-lead">En 3 étapes, GREENBIRDIE prend en charge votre conformité Décret Tertiaire de A à Z.</p>
+    <div class="steps-how">
+      <div class="step-how">
+        <div class="step-how-num">1</div>
+        <h3>Je renseigne mes informations</h3>
+        <p>En 2 minutes, je complète le formulaire avec les informations de mon établissement. Aucune expertise technique requise.</p>
+      </div>
+      <div class="step-how-arrow">→</div>
+      <div class="step-how">
+        <div class="step-how-num">2</div>
+        <h3>GREENBIRDIE vérifie mon éligibilité</h3>
+        <p>Notre équipe analyse votre situation réglementaire et prépare votre proposition personnalisée sous 48h.</p>
+      </div>
+      <div class="step-how-arrow">→</div>
+      <div class="step-how">
+        <div class="step-how-num">3</div>
+        <h3>Je reçois mon offre et mon accompagnement</h3>
+        <p>Vous signez en ligne et GREENBIRDIE gère votre conformité dès la première année, avec un suivi annuel inclus.</p>
+      </div>
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+  <section id="inclus-commerces">
+    <div class="section-tag">Votre prestation</div>
+    <h2 class="section-title">Ce qui est inclus dans votre abonnement</h2>
+    <p class="section-lead">Une solution complète pour rester conforme sans vous en préoccuper — à partir de 49 € HT / an pour les enseignes partenaires.</p>
+    <div class="inclus-grid">
+      <div class="inclus-item">Vérification de votre éligibilité réglementaire</div>
+      <div class="inclus-item">Gestion complète de vos déclarations annuelles</div>
+      <div class="inclus-item">Accès à votre tableau de bord GREENBIRDIE Énergie</div>
+      <div class="inclus-item">Suivi de vos consommations et de vos objectifs</div>
+      <div class="inclus-item">Assistance GREENBIRDIE (email + téléphone)</div>
+      <div class="inclus-item">Mise à jour réglementaire annuelle incluse</div>
+    </div>
+
+    <div class="alert-box">
+      <h4>Êtes-vous concerné par la loi sur les économies d'énergie ?</h4>
+      <p>La réglementation s'applique aux bâtiments de plus de 1 000 m² à usage commercial. Si votre boutique se trouve dans un centre commercial ou une galerie marchande, vous êtes probablement concerné — même si vous êtes locataire. GREENBIRDIE vérifie votre situation gratuitement, sans engagement.</p>
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+  <div class="platform-section">
+    <div class="platform-inner">
+      <div class="section-tag">Votre espace énergie</div>
+      <h2 class="section-title">GREENBIRDIE Énergie : bien plus que la conformité</h2>
+      <p class="section-lead">Inclus dans votre abonnement : un espace numérique pour suivre votre énergie, rester conforme et piloter vos économies — sans expertise technique.</p>
+      <div class="platform-layout">
+        <div class="platform-screenshot">
+          <img src="capture ecran plateforme energie.png" alt="Tableau de bord GREENBIRDIE Énergie — suivi des consommations et objectifs Décret Tertiaire">
+        </div>
+        <div class="platform-bullets">
+          <div class="platform-bullet">
+            <div class="platform-bullet-icon">📊</div>
+            <div class="platform-bullet-text"><h4>Suivi des consommations</h4><p>Électricité, gaz, eau — visualisez vos données par période et par site.</p></div>
+          </div>
+          <div class="platform-bullet">
+            <div class="platform-bullet-icon">🎯</div>
+            <div class="platform-bullet-text"><h4>Conformité réglementaire</h4><p>Votre statut Décret Tertiaire et vos objectifs 2030 affichés en temps réel.</p></div>
+          </div>
+          <div class="platform-bullet">
+            <div class="platform-bullet-icon">📈</div>
+            <div class="platform-bullet-text"><h4>Historique &amp; économies</h4><p>Mesurez vos progrès, identifiez les postes de surconsommation.</p></div>
+          </div>
+          <div class="platform-bullet">
+            <div class="platform-bullet-icon">🔔</div>
+            <div class="platform-bullet-text"><h4>Alertes &amp; rappels</h4><p>Notifications proactives avant les échéances réglementaires.</p></div>
+          </div>
+          <div class="platform-bullet">
+            <div class="platform-bullet-icon">📚</div>
+            <div class="platform-bullet-text"><h4>Ressources &amp; guides</h4><p>Fiches pratiques, livres blancs et conseils adaptés à votre activité.</p></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <section>
+    <div class="section-tag">Votre accompagnement</div>
+    <h2 class="section-title">GREENBIRDIE gère tout pour vous</h2>
+
+    <div class="offre-box">
+      <div class="offre-eyebrow">Solution Décret Tertiaire — Commerce &amp; Retail</div>
+      <h2>Conformité garantie, sans effort de votre côté</h2>
+      <p class="offre-sub">GREENBIRDIE accompagne +3 000 sites en France — Carrefour, Intermarché, Accor, Louvre Hotels</p>
+      <div class="offre-steps">
+        <div class="offre-step">
+          <div class="step-num">1</div>
+          <div class="step-content">
+            <h4>Vérification de votre situation</h4>
+            <p>Nous analysons vos obligations légales et vérifions votre éligibilité selon votre type d'activité et la surface de votre établissement.</p>
+          </div>
+        </div>
+        <div class="offre-step">
+          <div class="step-num">2</div>
+          <div class="step-content">
+            <h4>Mise en conformité complète</h4>
+            <p>Création de votre dossier réglementaire, collecte de vos données de consommation, déclaration annuelle effectuée par nos experts.</p>
+          </div>
+        </div>
+        <div class="offre-step">
+          <div class="step-num">3</div>
+          <div class="step-content">
+            <h4>Accès à votre tableau de bord</h4>
+            <p>Votre espace GREENBIRDIE Énergie vous permet de suivre vos consommations et votre conformité en un coup d'œil.</p>
+          </div>
+        </div>
+        <div class="offre-step">
+          <div class="step-num">4</div>
+          <div class="step-content">
+            <h4>Suivi annuel inclus</h4>
+            <p>Mise à jour réglementaire chaque année, alertes proactives et assistance GREENBIRDIE disponible par email et téléphone.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="price-encart">
+      <div>
+        <div class="price-encart-label">Offre enseignes partenaires</div>
+        <div class="price-encart-amounts">
+          <span class="price-struck">150 € HT / an / site</span>
+          <span class="price-main">49 € HT <span class="price-per">/ an / site</span></span>
+        </div>
+        <p class="price-encart-note">Conditions préférentielles négociées pour les enseignes partenaires. Sans engagement de durée minimum. Tarif standard : 150 € HT / an / site.</p>
+      </div>
+      <a href="#form-commerces" class="btn-cta-gold">Obtenir mon offre →</a>
+    </div>
+
+    <div id="form-commerces" class="form-section">
+      <div class="form-header">
+        <h2>Vérifiez votre situation en moins de 2 minutes</h2>
+        <p>À partir de votre SIRET, nos équipes vérifient si votre établissement est concerné par le Décret Tertiaire et si des informations sont déjà disponibles dans notre base. Nous vous adressons ensuite la solution la plus adaptée à votre situation.</p>
+      </div>
+      <div class="form-reassurance">
+        <span class="reassurance-item">Analyse préalable de votre situation</span>
+        <span class="reassurance-item">Recommandé dans le cadre de l'accompagnement Carrefour</span>
+        <span class="reassurance-item">Accompagnement par une équipe spécialisée</span>
+        <span class="reassurance-item">Sans engagement</span>
+      </div>
+      <form id="commercesForm" name="decret-tertiaire-commerces" method="POST" data-netlify="true" data-netlify-honeypot="bot-field" onsubmit="handleSubmit(event, 'commerces')">
+        <input type="hidden" name="form-name" value="decret-tertiaire-commerces">
+        <input type="hidden" name="bot-field" style="display:none">
+        <div class="form-grid">
+
+          <!-- SIRET — donnée clé pour qualification -->
+          <div class="form-group full">
+            <label>SIRET de l'établissement *</label>
+            <div class="siret-group">
+              <input type="text" required name="siret" id="siret-commerces"
+                placeholder="Ex : 12345678901234"
+                maxlength="14" inputmode="numeric" pattern="[0-9]{14}"
+                autocomplete="off"
+                oninput="validateSiret(this, 'siret-status-commerces')">
+              <span class="siret-status" id="siret-status-commerces"></span>
+            </div>
+            <p class="field-hint">Nous utilisons le SIRET pour vérifier si votre établissement est déjà identifié dans notre base et faciliter l'analyse de votre situation. Le SIRET figure sur votre extrait Kbis ou vos factures fournisseurs.</p>
+          </div>
+
+          <!-- Raison sociale + adresse — prêts pour préremplissage SIRENE futur -->
+          <div class="form-group">
+            <label>Raison sociale *</label>
+            <input type="text" required name="raison_sociale" id="raison-sociale-commerces"
+              data-siret-fill="raison_sociale"
+              placeholder="Se préremplira automatiquement">
+          </div>
+          <div class="form-group">
+            <label>Adresse de l'établissement</label>
+            <input type="text" name="adresse" id="adresse-commerces"
+              data-siret-fill="adresse"
+              placeholder="Se préremplira automatiquement">
+          </div>
+
+          <!-- Contact -->
+          <div class="form-group"><label>Nom *</label><input type="text" required name="nom" placeholder="Martin"></div>
+          <div class="form-group"><label>Prénom *</label><input type="text" required name="prenom" placeholder="Sophie"></div>
+          <div class="form-group"><label>Email professionnel *</label><input type="email" required name="email" placeholder="s.martin@enseigne.fr"></div>
+          <div class="form-group"><label>Téléphone</label><input type="tel" name="telephone" placeholder="06 00 00 00 00"></div>
+
+          <!-- Qualification -->
+          <div class="form-group"><label>Vous êtes… *</label>
+            <select name="role" required>
+              <option value="">Sélectionner…</option>
+              <option>Commerçant locataire (boutique, restaurant, coiffeur…)</option>
+              <option>Franchisé multi-sites</option>
+              <option>Propriétaire / gestionnaire d'immeuble</option>
+              <option>Gestionnaire de centre commercial</option>
+            </select>
+          </div>
+          <div class="form-group"><label>Nombre d'établissements concernés *</label>
+            <select name="nb_etablissements" required>
+              <option value="">Sélectionner…</option>
+              <option>1 établissement</option>
+              <option>2 à 5 établissements</option>
+              <option>6 à 20 établissements</option>
+              <option>Plus de 20 établissements</option>
+            </select>
+          </div>
+          <div class="form-group"><label>Votre situation actuelle *</label>
+            <select name="situation_actuelle" required>
+              <option value="">Sélectionner…</option>
+              <option>Je ne sais pas si je suis concerné</option>
+              <option>Je suis concerné mais n'ai rien fait</option>
+              <option>J'ai commencé les démarches mais je bloque</option>
+              <option>Je cherche à simplifier mon suivi existant</option>
+            </select>
+          </div>
+          <div class="form-group"><label>Enseigne partenaire ?</label>
+            <select name="enseigne_partenaire">
+              <option value="">Sélectionner si applicable…</option>
+              <option>Carrefour / groupement Carrefour</option>
+              <option>Intermarché / Les Mousquetaires</option>
+              <option>Autre groupement — préciser dans le message</option>
+              <option>Pas d'accord-cadre enseigne</option>
+            </select>
+          </div>
+          <div class="form-group full"><label>Une question ou précision ?</label>
+            <textarea name="message" placeholder="Ex : J'ai une boutique dans un centre commercial Carrefour, je ne sais pas si je suis concerné par la loi énergie…"></textarea>
+          </div>
+        </div>
+
+        <p class="form-note">* Champs obligatoires. Vos données sont utilisées uniquement pour analyser votre éligibilité — aucun démarchage, aucun engagement.</p>
+        <button type="submit" class="submit-btn">
+          Analyser ma situation
+          <svg width="16" height="16" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </button>
+
+        <div class="form-bottom-reassurance">
+          <span class="reassurance-item">Analyse préalable de votre situation</span>
+          <span class="reassurance-item">Vérification de l'éligibilité</span>
+          <span class="reassurance-item">Aucun engagement tant que votre situation n'a pas été analysée</span>
+          <span class="reassurance-item">Réponse sous 48 heures ouvrées</span>
+        </div>
+
+        <div class="success-msg" id="success-commerces">
+          ✅ Votre demande a bien été transmise. Un expert GREENBIRDIE analyse votre situation et vous contacte sous 48h ouvrées.
+        </div>
+      </form>
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+  <div class="plus-loin-section" id="inclus-commerces">
+    <div class="section-tag">Services complémentaires</div>
+    <h2 class="section-title">Allez plus loin dans la maîtrise de votre énergie</h2>
+    <p class="section-lead" style="margin-bottom:0">Disponibles dans votre espace GREENBIRDIE Énergie, en complément de votre conformité Décret Tertiaire.</p>
+    <div class="plus-loin-grid">
+      <div class="plus-loin-card">
+        <div class="plus-loin-card-icon">⚡</div>
+        <div class="plus-loin-card-tag">Avec Mon Courtier Énergie</div>
+        <h3>Optimiser mon contrat d'énergie</h3>
+        <p>Comparez les offres et réduisez votre facture électricité ou gaz grâce à notre partenaire courtier spécialisé.</p>
+        <span class="plus-loin-card-cta">En savoir plus →</span>
+      </div>
+      <div class="plus-loin-card">
+        <div class="plus-loin-card-icon">💡</div>
+        <div class="plus-loin-card-tag">Bientôt disponible</div>
+        <h3>Estimer mes économies d'énergie</h3>
+        <p>Calculez le potentiel d'économies de votre établissement grâce à notre simulateur dédié aux commerçants.</p>
+        <span class="plus-loin-card-cta">Être notifié →</span>
+      </div>
+      <div class="plus-loin-card">
+        <div class="plus-loin-card-icon">📖</div>
+        <div class="plus-loin-card-tag">Ressources GREENBIRDIE</div>
+        <h3>Comprendre mes obligations</h3>
+        <p>Guides pratiques, livres blancs et fiches explicatives pour comprendre la réglementation sans jargon.</p>
+        <span class="plus-loin-card-cta">Accéder aux ressources →</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<footer style="background:#fff; border-top: 1px solid #e0d9ce;">
+  <div class="footer-logo"><img src="data:image/png;base64,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" alt="GREENBIRDIE"></div>
+  <div class="footer-tagline">L'énergie optimiste</div>
+  <div class="footer-links">
+    <a href="https://www.greenbirdie.com">Site principal</a>
+    <a href="https://www.greenbirdie.com/contact">Contact</a>
+    <a href="https://www.greenbirdie.com/notre-histoire">À propos</a>
+    <a href="https://www.greenbirdie.com/blog">Articles</a>
+  </div>
+  <div class="footer-copy">© 2026 GREENBIRDIE EURL — Expert en transition énergétique depuis 20 ans — Paris 14e</div>
+</footer>
+
+<script>
+/* ── Navigation ───────────────────────────────────────────── */
+function showPage(id, btn) {
+  document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+  document.querySelectorAll('.nav-tab').forEach(t => t.classList.remove('active'));
+  document.getElementById('page-' + id).classList.add('active');
+  btn.classList.add('active');
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+
+/* ── Soumission formulaire ────────────────────────────────── */
+function handleSubmit(e, type) {
+  e.preventDefault();
+  const form = e.target;
+  const btn = form.querySelector('.submit-btn');
+  btn.disabled = true;
+  btn.textContent = 'Analyse en cours…';
+  const data = new FormData(form);
+  fetch('/', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+    body: new URLSearchParams(data).toString()
+  })
+  .then(() => {
+    form.style.opacity = '0.4';
+    form.style.pointerEvents = 'none';
+    document.getElementById('success-' + type).classList.add('show');
+  })
+  .catch(() => {
+    btn.disabled = false;
+    btn.textContent = 'Réessayer';
+    alert('Une erreur est survenue. Veuillez réessayer ou nous contacter directement.');
+  });
+}
+
+/* ── Validation SIRET ─────────────────────────────────────── */
+/**
+ * Valide un SIRET : 14 chiffres, algorithme de Luhn.
+ * Met à jour l'indicateur visuel en temps réel.
+ */
+function validateSiret(input, statusId) {
+  // N'accepter que les chiffres
+  input.value = input.value.replace(/\D/g, '').slice(0, 14);
+
+  const val = input.value;
+  const status = document.getElementById(statusId);
+
+  if (val.length === 0) {
+    status.textContent = '';
+    status.className = 'siret-status';
+    return;
+  }
+  if (val.length < 14) {
+    status.textContent = val.length + '/14';
+    status.className = 'siret-status invalid';
+    return;
+  }
+
+  // Algorithme de Luhn adapté au SIRET
+  if (luhnSiret(val)) {
+    status.textContent = '✓ SIRET valide';
+    status.className = 'siret-status valid';
+    // Déclencher la recherche SIRENE si disponible
+    lookupSirene(input);
+  } else {
+    status.textContent = '✗ SIRET invalide';
+    status.className = 'siret-status invalid';
+  }
+}
+
+function luhnSiret(siret) {
+  // Exception légale : La Poste (SIREN 356000000)
+  if (siret.startsWith('356000000')) return true;
+  let sum = 0;
+  for (let i = 0; i < 14; i++) {
+    let n = parseInt(siret[i]);
+    if (i % 2 === 0) { n *= 2; if (n > 9) n -= 9; }
+    sum += n;
+  }
+  return sum % 10 === 0;
+}
+
+/* ── Lookup SIRENE (stub — prêt pour intégration future) ──── */
+/**
+ * Préremplissage raison sociale + adresse à partir du SIRET.
+ *
+ * Pour activer :
+ *   1. Obtenir une clé API INSEE : https://api.insee.fr/
+ *   2. Remplacer l'URL et décommenter le bloc fetch ci-dessous.
+ *   3. Mapper les champs data-siret-fill="raison_sociale" et data-siret-fill="adresse".
+ *
+ * Documentation : https://api.insee.fr/catalogue/site/themes/wso2/subthemes/insee/pages/item-info.jag?name=Sirene&version=V3
+ */
+function lookupSirene(siretInput) {
+  const siret = siretInput.value;
+  const form  = siretInput.closest('form');
+
+  // Repérer les champs cibles dans le même formulaire
+  const fieldRS   = form.querySelector('[data-siret-fill="raison_sociale"]');
+  const fieldAddr = form.querySelector('[data-siret-fill="adresse"]');
+
+  /* — Activer dès que l'API est disponible —
+  const API_KEY = 'VOTRE_CLE_INSEE';
+  fetch(`https://api.insee.fr/enterprises/sirene/V3/siret/${siret}`, {
+    headers: { 'Authorization': 'Bearer ' + API_KEY, 'Accept': 'application/json' }
+  })
+  .then(r => r.ok ? r.json() : null)
+  .then(data => {
+    if (!data) return;
+    const ul   = data.etablissement.uniteLegale;
+    const adr  = data.etablissement.adresseEtablissement;
+    const name = ul.denominationUniteLegale
+              || (ul.prenom1UniteLegale + ' ' + ul.nomUniteLegale);
+    const addr = [adr.numeroVoieEtablissement, adr.typeVoieEtablissement,
+                  adr.libelleVoieEtablissement, adr.codePostalEtablissement,
+                  adr.libelleCommuneEtablissement].filter(Boolean).join(' ');
+    if (fieldRS   && !fieldRS.value)   { fieldRS.value   = name; fieldRS.classList.add('filled'); }
+    if (fieldAddr && !fieldAddr.value) { fieldAddr.value = addr; fieldAddr.classList.add('filled'); }
+  })
+  .catch(() => {}); // Silencieux — le formulaire reste utilisable sans l'API
+  */
+
+  // Stub visible en dev : décommenter pour tester l'UI sans API
+  // if (fieldRS   && !fieldRS.value)   { fieldRS.value   = 'Raison Sociale (test)';    fieldRS.classList.add('filled'); }
+  // if (fieldAddr && !fieldAddr.value) { fieldAddr.value = '1 rue de la Paix 75001 Paris'; fieldAddr.classList.add('filled'); }
+}
+</script>
+</body>
+</html>
